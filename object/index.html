@@ -26,19 +26,32 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 </ul>
-                <form class="d-flex" role="search">
-                    <select id="company" onchange="onCompanyChange()" class="form-select me-2" aria-label="Default select example">
+                <select id="company" onchange="onCompanyChange()" class="form-select me-2"
+                    aria-label="Default select example">
 
-                    </select>
-                    <select id="brand" class="form-select me-2" aria-label="Default select example">
+                </select>
+                <select id="brand" class="form-select me-2" aria-label="Default select example">
 
-                    </select>
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </form>
+                </select>
+                <button onclick="filterCars()" type="submit" class="btn btn-primary">Search</button>
             </div>
         </div>
     </nav>
 
+    <div class="row p-4" id="allCars">
+
+        <!-- <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">honda civic reborn</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">2006</h6>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">"red", "blue", "green"</h6>
+                    <h2>$15000</h2>
+                </div>
+            </div>
+        </div> -->
+
+    </div>
 
 
 

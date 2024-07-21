@@ -454,6 +454,10 @@ var carvariant = {
 
 var company = document.getElementById('company')
 var brand = document.getElementById('brand')
+var allCars = document.getElementById('allCars')
+
+company.innerHTML = `<option value="">Select Company</option>`
+brand.innerHTML = `<option value="">Select Brand</option>`
 
 for (var key in carvariant) {
     // console.log(key)
@@ -461,10 +465,65 @@ for (var key in carvariant) {
               <option value="${key}">${key.toUpperCase()}</option>
    `
     for (var key1 in carvariant[key]) {
-        console.log(key1)
+        // console.log(key1)
+        for (var key2 in carvariant[key][key1]) {
+            var carData = carvariant[key][key1][key2]
+            var colorsDiv = ''
+            for (var i = 0; i < carData.colors.length; i++) {
+                // console.log()
+                colorsDiv += `<div class='me-2' style=" border:1px solid; width:20px; height:20px; border-radius: 10px; background-color: ${carData.colors[i]};"></div>`
+            }
+            console.log(colorsDiv)
+            allCars.innerHTML += `
+             <div class="col mb-2">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">${carvariant[key][key1][key2].name}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">${carvariant[key][key1][key2].year}</h6>
+                    <h2>Rs ${carvariant[key][key1][key2].price}</h2>  
+                    <div class='d-flex'>${colorsDiv}</div>
+
+
+                </div>
+            </div>
+        </div>
+            `
+        }
     }
 }
 
+function onCompanyChange() {
+    brand.innerHTML = ""
+    brand.innerHTML = `<option value="">Select Brand</option>`
+
+
+    // console.log(company.value)
+    for (var key in carvariant[company.value]) {
+        // console.log(key)
+        brand.innerHTML += `
+           <option value="${key}">${key.toUpperCase()}</option>
+
+        `
+    }
+}
+
+function filterCars() {
+    // console.log()
+    var carData = carvariant[company.value][brand.value].type
+    // console.log(carData.colors)
+    allCars.innerHTML += `
+             <div class="col mb-2">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">${carData.name}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">${carData.year}</h6>
+                    <h2>Rs ${carData.price}</h2>
+                </div>
+            </div>
+        </div>
+            `
+            
+}
 
 
 
